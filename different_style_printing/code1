@@ -1,0 +1,30 @@
+////--------------------------creation of objects and different prinitng styles--------//
+`include "uvm_macros.svh"
+`include "uvm_pkg.sv"
+ import uvm_pkg::*;
+class object extends uvm_object;   /// extned form [parent];
+  rand byte a;
+  rand int b;
+  `uvm_object_utils_begin(object);  //field macros 
+  `uvm_field_int(a,UVM_ALL_ON);
+  `uvm_field_int(b,UVM_ALL_ON);
+  `uvm_object_utils_end;
+  function new(string name = "object");  // constructor to call the base class
+    super.new(name);
+  endfunction
+endclass
+///----------------------------testcase----------------------------------------
+  module top;
+    object obj1,obj2;// handles of the driver class
+    initial
+      begin 
+        obj1=object::type_id::create("obj1");//object creatoion of obj1
+        obj2=object::type_id::create("obj2");//object creatoion of obj2
+        ////defualt printer is table printer
+        obj1.print();
+        ////to print in the line ;
+        obj1.print(uvm_default_line_printer);
+        ///to print in the tree 
+        obj1.print(uvm_default_tree_printer);
+      end
+  endmodule
