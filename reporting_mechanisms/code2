@@ -27,7 +27,7 @@
    //*UVM_INFO testbench.sv(15) @ 0: reporter [MSG3] THIS IS THIRD  METHOD
    //*UVM_FATAL testbench.sv(17) @ 0: reporter [MSG1] THIS IS SEVENTH METHOD
 
-/* 
+
 //reportings OUTPUTS
 // ** Report counts by severity
 // UVM_INFO :    4
@@ -39,4 +39,3 @@
 // [MSG2]     1
 // [MSG3]     1
 // [UVM/RELNOTES]     1
- */
