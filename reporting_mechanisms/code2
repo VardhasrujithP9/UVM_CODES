@@ -1,0 +1,42 @@
+
+//=========================================================================//
+//-------------------reporting mecahnism in uvm ---------------------------//
+//=========================================================================//
+
+`include "uvm_macros.svh"
+`include "uvm_pkg.sv"
+ import uvm_pkg::*;
+
+ module test;
+  initial 
+    begin
+      `uvm_info("MSG1", "THIS IS FIRST  METHOD",0)
+      `uvm_info("MSG2", "THIS IS SECOND METHOD",100)
+      `uvm_info("MSG3", "THIS IS THIRD  METHOD",200)  //reporting methods like info fatal error warnings
+      `uvm_info("MSG1", "THIS IS FOURTH METHOD",400)
+      `uvm_fatal("MSG1", "THIS IS SEVENTH METHOD")
+      `uvm_warning("MSG1", "THIS IS FIXTH METHOD")
+      `uvm_fatal("MSG1", "THIS IS SIXTH METHOD")
+    end
+ endmodule
+
+
+ //output:
+   //*UVM_INFO testbench.sv(13) @ 0: reporter [MSG1] THIS IS FIRST  METHOD
+   //*UVM_INFO testbench.sv(14) @ 0: reporter [MSG2] THIS IS SECOND METHOD
+   //*UVM_INFO testbench.sv(15) @ 0: reporter [MSG3] THIS IS THIRD  METHOD
+   //*UVM_FATAL testbench.sv(17) @ 0: reporter [MSG1] THIS IS SEVENTH METHOD
+
+/* 
+//reportings OUTPUTS
+// ** Report counts by severity
+// UVM_INFO :    4
+// UVM_WARNING :    0
+// UVM_ERROR :    0
+// UVM_FATAL :    1
+// ** Report counts by id
+// [MSG1]     2
+// [MSG2]     1
+// [MSG3]     1
+// [UVM/RELNOTES]     1
+ */
